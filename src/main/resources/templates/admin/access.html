@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="HeaderBar">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+</head>
+<body style="alignment: center; margin-left: 10%; margin-top: 4%; margin-right: 10%; margin-bottom: auto">
+<p style="align-content: center; alignment: top" align="center"> welcome Mr.<span th:text ="${#authentication.getName()}"></span>
+<p style="align-content: center; alignment: center; background: coral; color: gray">Here are some of the actions your can perform:<br>
+1. adding new users<br>
+2. editing and updating existing users information (such as changing roles and making the user inactive incase of termination)<br>
+    3. viewing all the existing users(Employees) in the orgaisation.</p><br >
+<p align="center"> you can follow the links mentioned below to get used to the system software</p>
+<p align="center"><h2 style="alignment: center ;align-content: center; color: chocolate" align="center">To add new users,  <a href="/register" style="color: aqua">click me</a></h2></p>
+</body>
+</html>

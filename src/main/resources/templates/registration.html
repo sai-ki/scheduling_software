@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration page</title>
+</head>
+<body>
+<form action="#" th:action="@{'/save'}"
+      method="post" th:object="${newUser}">
+    <table border="1" cellpadding="10" align="center">
+
+        <tbody>
+        <tr>
+            <td> <label >name:</label><input type="text" th:field="*{name}"/>
+            </td>
+        </tr>
+        <tr>
+            <td> <label >id</label><input type="text" th:field="*{id}"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td> <label >department:</label><input type="text" th:field="*{department}"/>
+            </td>
+        </tr>
+        <tr>
+            <td> <label >email:</label><input type="text" th:field="*{email}"/>
+            </td>
+        </tr>
+        <tr>
+            <td> <label >username:</label><input type="text" th:field="*{username}"/>
+            </td>
+        </tr>
+        <tr>
+            <td> <label >password:</label> <input type="text" th:field="*{password}"/>
+            </td>
+        </tr>
+        <tr>
+            <td> <label >roles:</label><input type="text" th:field="*{roles}"/>
+            </td>
+        </tr>
+        <tr>
+            <td> <label >permissions:</label><input type="text" th:field="*{permissions}"/>
+            </td>
+        </tr>
+        <tr>
+            <td> <label >currently employed:</label><input type="text" th:field="*{active}"/>
+            </td>
+        </tr>
+        <tr>
+            <td><label>select your availability:</label><br>
+                <span style="alignment: center", th:align="center"><input type="checkbox" th:field="*{availability}" th:text="monday" th:value="monday"/> <label >monday</label><br>
+            <input type="checkbox" th:field="*{availability}"  th:value="tuesday"/> <label >tuesday</label><br>
+            <input type="checkbox" th:field="*{availability}"  th:value="wednesday"/> <label >wednesday</label><br>
+            <input type="checkbox" th:field="*{availability}"  th:value="thursday"/> <label >thursday</label><br>
+            <input type="checkbox" th:field="*{availability}"  th:value="friday"/> <label >friday</label><br>
+            <input type="checkbox" th:field="*{availability}"  th:value="saturday"/> <label >saturday</label><br>
+            <input type="checkbox" th:field="*{availability}"  th:value="sunday"/> <label >sunday</label><br>
+            </span></td>
+        </tr>
+        </tbody>
+    </table>
+    <p align="center" ><button type="submit" >submit</button></p>
+</form>
+
+</body>
+</html>

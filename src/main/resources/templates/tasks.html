@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>List of tasks</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<table border="1" cellpadding="10" align="center">
+    <thead>
+    <tr>
+        <th>task id</th>
+        <th>task name</th>
+        <th>task date</th>
+        <th colspan="2">actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.task_id}"></td>
+        <td th:text="${task.task_name}"></td>
+        <td th:text="${task.task_Date}"></td>
+
+
+        <td><a href="/viewJobEmployees/"+${task.task_id}>View Assigned Employees</a></td>
+        <td><a href="/deleteTask/"+${task.task_id}>Delete Task</a></td>
+
+
+    </tr>
+    </tbody>
+    </table>
+</body>
+</html>

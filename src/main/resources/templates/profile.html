@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="HeaderBar">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset="UTF-8">
+    <title>My profile</title>
+</head>
+<body style="margin-left: 4%; margin-right: 8%">
+<div>
+<table border="1" cellpadding="10" align="center" style="alignment: center">
+    <thead>
+    <tr>
+        <th>username</th>
+        <th>id</th>
+        <th>name</th>
+        <th>department</th>
+        <th>roles</th>
+        <th>permissions</th>
+        <th>active</th>
+        <th>email</th>
+        <th>availability</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.department}"></td>
+        <td th:text="${user.roles}"></td>
+        <td th:text="${user.permissions}"></td>
+        <td th:text="${user.active}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <span th:each="availability : ${user.availability}" ><span th:text="${availability.day}"></span><span>,</span><br></span>
+        </td>
+        <td><a th:href="@{'/EditDetails/'}">Edit</a></td>
+         </tr>
+    </tbody>
+</table>
+    </div>
+<br>
+<p style="alignment: center" align="center" sec:authorize="hasRole('manager')">here are the list of all employees in your department managed by you</p>
+
+<div sec:authorize="hasRole('manager')">
+    <table border="1" cellpadding="10" align="center" style="alignment: center">
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>id</th>
+            <th>roles</th>
+            <th>department</th>
+            <th>permissions</th>
+            <th>active</th>
+            <th>email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${allemployes}">
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.id}"></td>
+            <td th:text="${employee.roles}"></td>
+            <td th:text="${employee.department}"></td>
+            <td th:text="${employee.permissions}"></td>
+            <td th:text="${employee.active}"></td>
+            <td th:text="${employee.email}"></td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+<p><a style="color: red; alignment: center" href="/PasswordReset">RESET PASSWORD</a></p>
+</body>
+</html>

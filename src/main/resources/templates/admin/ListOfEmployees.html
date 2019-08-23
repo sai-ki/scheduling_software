@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Select the employees Needed</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<form action="#" th:action="@{'/SendList/'+ ${task.task_id}+'/'+${task.task_name}+'/'+${task.task_Date}}"
+      method="get" th:object="${usernameList}">
+    <table border="1" cellpadding="10" align="center">
+        <thead>
+        <tr>
+            <th>select</th>
+            <th>Id</th>
+            <th>username</th>
+            <th>email</th>
+            <th>name</th>
+            <th>role</th>
+            <th>active</th>
+            <th>availability</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${employees}">
+            <td> <input type="checkbox" th:field="*{usernames}"
+                        th:value="${employee.employee_username}" />
+            </td>
+            <td th:text="${employee.employee_id}"></td>
+            <td th:text="${employee.employee_username}"></td>
+            <td th:text="${employee.email}"></td>
+            <td th:text="${employee.employee_name}"></td>
+            <td th:text="${employee.role}"></td>
+            <td th:text="${employee.active}"></td>
+            <td th:text="${employee.active}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+    <p align="center" ><button type="submit" >submit</button></p>
+</form>
+</body>
+</html>

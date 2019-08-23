@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+    <title>Log-in page</title>
+</head>
+<body>
+<div >
+
+                <form th:action="@{/login}" method="post">
+                        <!-- Thymeleaf + Spring Security error display -->
+                        <div th:if="${param.error}" class="alert alert-danger">
+                            Invalid username and password.
+                        </div>
+
+                        <div th:if="${param.logout}" class="alert alert-success">
+                            You have been logged out.
+                        </div>
+
+                        <!-- Login Controls -->
+                        <div >
+                            <label >Username</label>
+                            <input type="text" id="username" name="username"
+                                   placeholder="Username">
+                        </div>
+
+                        <div >
+                            <label >password</label>
+                            <input type="password"  id="password" name="password"
+                                   placeholder="Password">
+                        </div>
+
+                        <!-- Login Button -->
+                        <div >
+                            <button type="submit" >Log in</button>
+                        </div>
+
+                </form>
+</div>
+</body>
+</html>

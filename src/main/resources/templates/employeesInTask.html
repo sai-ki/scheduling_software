@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees In Task</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<p style="alignment: center; margin-top: 10%"><h3 align="center"> here are the list of employees assigned to Task number : <span th:text="${id}"></span></h3></p>
+<table border="1" cellpadding="10" align="center">
+    <thead>
+    <tr>
+        <th>employee id</th>
+        <th>currently employed</th>
+        <th>name</th>
+        <th>email</th>
+        <th>role</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.employee_id}"></td>
+        <td th:text="${employee.active}"></td>
+        <td th:text="${employee.employee_name}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.role}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

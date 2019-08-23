@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- Fragment #1 : Header files contains css and js references -->
+<head th:fragment="headerfiles">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<!-- Fragment #2 : Navbar contains nav links -->
+<div align="left" style="margin-left: 1%; margin-top: 1%; vertical-align: top;inset-block: auto">
+    <button sec:authorize="hasRole('manager')" ><a href="/admin" style="color: black">administration</a></button>
+    <button sec:authorize="isAuthenticated()" ><a href="/profile" style="color: black">My profile</a></button>
+    <span align="center">
+        <form form-method="post" th:action="@{/viewJobs}">
+            <button sec:authorize="hasRole('manager')" type="submit"><a href="/addJobs">Create Jobs</a></button>
+            <button sec:authorize="isAuthenticated()" type="submit">View Jobs</a></button>
+        </form>
+    </span>
+    <span align="right">
+        <form form-method="post" th:action="@{/logout}">
+            <button sec:authorize="isAuthenticated()" type="submit">Logout</button>
+            <button sec:authorize="isAnonymous()" ><a href="/login">Login</a></button>
+        </form>
+    </span>
+</div>
+
+</body>
+</html>
