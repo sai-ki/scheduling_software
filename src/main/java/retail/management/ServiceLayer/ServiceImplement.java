@@ -32,7 +32,7 @@ public class ServiceImplement {
      * @param userInfo
      */
     public void saveToDatabase(UserInfo userInfo) {
-        if(userInfo.getPassword().matches("^$2")) { }
+        if(userInfo.getPassword().startsWith("$")) { }
         else{userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));}
         sqlDatabase.save(userInfo);
     }

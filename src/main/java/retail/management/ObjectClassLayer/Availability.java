@@ -1,8 +1,6 @@
 package retail.management.ObjectClassLayer;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,9 +11,8 @@ public class Availability {
     @Id
     @Column(length = 10)
     private String day;
-    @ManyToMany(mappedBy = "availability", fetch = FetchType.LAZY)
-    @JsonIgnore
-    @JsonBackReference
+    @ManyToMany(mappedBy = "availability")
+ @JsonIgnore
     private List<UserInfo>userInfos;
 
     public String getDay() {

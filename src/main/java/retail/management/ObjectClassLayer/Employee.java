@@ -1,5 +1,11 @@
 package retail.management.ObjectClassLayer;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.List;
 import java.util.Set;
 
@@ -35,14 +41,13 @@ public class Employee {
     private String email;
     private boolean active;
     private String departmentName;
+    private List<Availability> employeeAvailability;
 
-    private Set<Availability> employeeAvailability;
-
-    public Set<Availability> getEmployeeAvailability() {
+    public List<Availability> getEmployeeAvailability() {
         return employeeAvailability;
     }
 
-    public void setEmployeeAvailability(Set<Availability> employeeAvailability) {
+    public void setEmployeeAvailability(List<Availability> employeeAvailability) {
         this.employeeAvailability = employeeAvailability;
     }
 
@@ -58,7 +63,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String employee_id, String employee_name, String employee_username, String role, String email, boolean active, String departmentName, Set<Availability>employeeAvailability) {
+    public Employee(String employee_id, String employee_name, String employee_username, String role, String email, boolean active, String departmentName, List<Availability>employeeAvailability) {
         this.employeeId = employee_id;
         this.employeeName = employee_name;
         this.employeeUsername = employee_username;

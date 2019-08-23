@@ -153,7 +153,7 @@ public class BusinessController
         updatedUser.setEditedUserDetails(databaseUser.getPassword(),databaseUser.getRoles(),databaseUser.getPermissions(),databaseUser.isActive());
         serviceImplement.saveToDatabase(updatedUser);
         Employee e = new Employee(updatedUser.getId(), updatedUser.getName(), updatedUser.getUsername(), updatedUser.getRoles(), updatedUser.getEmail(), updatedUser.isActive(),updatedUser.getDepartment(),updatedUser.getAvailability());
-        String ss= restTemplate.postForObject("http://192.168.0.18:8080/employee", e, String.class);
+        String ss= restTemplate.postForObject("http://192.168.0.18:8080/employee",e, String.class);
         return "redirect:/profile";
     }
 

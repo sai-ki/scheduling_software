@@ -1,5 +1,8 @@
 package retail.management.ObjectClassLayer;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
@@ -29,15 +32,15 @@ public class UserInfo {
     private String email;
     @Column(columnDefinition = "boolean default true")
     private boolean active;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JsonBackReference
-    private Set<Availability> availability;
+    private List<Availability> availability;
 
-    public Set<Availability> getAvailability() {
+    public List<Availability> getAvailability() {
         return availability;
     }
 
-    public void setAvailability(Set<Availability> availability) {
+    public void setAvailability(List<Availability> availability) {
         this.availability = availability;
     }
 
@@ -46,7 +49,7 @@ public class UserInfo {
     public UserInfo() {
     }
 
-    public UserInfo( String username,String id, String name, String password, String roles, String permissions, String department, String email, boolean active,Set<Availability>availability) {
+    public UserInfo( String username,String id, String name, String password, String roles, String permissions, String department, String email, boolean active,List<Availability>availability) {
         this.username = username;
         this.id=id;
         this.password = password;
